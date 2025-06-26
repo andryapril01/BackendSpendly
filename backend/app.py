@@ -156,22 +156,6 @@ def scan_receipt():
     except Exception as e:
         return jsonify({'error': f'Error processing receipt: {str(e)}'}), 500
 
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token, jwt_required, get_jwt_identity, get_jwt
-from models import db, User, Token, Category, DEFAULT_CATEGORIES
-from config import config
-from sqlalchemy import text
-import os
-import logging
-from datetime import datetime, timezone, timedelta
-import re
-import traceback
-import sys
-
-# Create Flask application
-app = Flask(__name__)
-
 # Load configuration
 config_name = os.environ.get('FLASK_ENV', 'production')
 app.config.from_object(config[config_name])
