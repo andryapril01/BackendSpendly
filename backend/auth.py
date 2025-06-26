@@ -197,7 +197,7 @@ def health_check():
     }), 200
 
 # Auth routes
-@app.route('/api/auth/register', methods=['POST'])
+@app.route('/api/auth/register', methods=['POST', 'OPTIONS'])
 def register():
     try:
         logger.info("=== REGISTRATION REQUEST ===")
@@ -319,7 +319,7 @@ def register():
         }), 500
 
 # FIXED Login endpoint with better error handling
-@app.route('/api/auth/login', methods=['POST'])
+@app.route('/api/auth/login', methods=['POST', 'OPTIONS'])
 def login():
     try:
         logger.info("=== LOGIN REQUEST START ===")
