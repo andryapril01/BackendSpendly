@@ -360,7 +360,6 @@ def test_database_connection():
 #         }
 #     }), 200
 
-     print(response.headers)
 
 # Function to create database tables and default data
 def setup_database():
@@ -1046,7 +1045,14 @@ if __name__ == '__main__':
 # Health check endpoint
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    return jsonify({'status': 'OK', 'message': 'API is running'})
+    # Create the response
+    response = jsonify({'status': 'OK', 'message': 'API is running'})
+    
+    # Print the response headers
+    print(response.headers)
+    
+    # Return the response
+    return response
 
 # Run the app
 if __name__ == '__main__':
