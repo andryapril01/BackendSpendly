@@ -33,12 +33,12 @@ jwt = JWTManager(app)
 # Token blacklist
 blacklisted_tokens = set()
 
-# Enable CORS with all origins allowed
-CORS(app,
-     supports_credentials=True,
-     origins=["https://frontend-spendly-b2fg.vercel.app/"],
-     allow_headers=["Content-Type", "Authorization", "Accept"],
-     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+# # Enable CORS with all origins allowed
+# CORS(app,
+#      supports_credentials=True,
+#      origins=["https://frontend-spendly-b2fg.vercel.app/"],
+#      allow_headers=["Content-Type", "Authorization", "Accept"],
+#      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 
 # Import and register blueprints AFTER app initialization
