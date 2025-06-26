@@ -23,7 +23,7 @@ app = Flask(__name__)
 # Enable CORS
 CORS(app,
      supports_credentials=True,
-     origins=["https://frontend-spendly-b2fg.vercel.app/"],
+     origins=["https://frontend-spendly-b2fg.vercel.app"],
      allow_headers=["Content-Type", "Authorization", "Accept"],
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
