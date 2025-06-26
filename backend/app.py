@@ -357,6 +357,64 @@ def test_database_connection():
 #         }
 #     }), 200
 
+# Function to create database tables and default data
+def setup_database():
+    """Create all tables and initialize default data"""
+    try:
+        # Create all tables
+        logger.info("🔨 Creating all database tables...")
+        db.create_all()
+        logger.info("✅ All database tables created successfully!")
+
+        # Check if admin exists
+        admin_exists = User.query.filter_by(email='admin@spendly.com').first()
+        if not admin_exists:
+            logger.info("👤 Creating default admin user...")
+            admin_user = User(
+                email='admin@spendly.com',
+                first_name='Admin',
+                last_name='User',
+                password='Admin123!',
+                is_active=True,
+                is_verified=True
+            )
+            db.session.add(admin_user)
+            db.session.flush()  # Get the user ID
+            logger.info(f"✅ Admin user created with ID: {admin_user.id}")
+
+            # Create default categories for the admin user
+            logger.info("📂 Creating default categories for admin user...")
+            for cat_data in DEFAULT_CATEGORIES:
+                category = Category(
+                    user_id=admin_user.id,
+                    name=cat_data['name'],
+                    icon=cat_data['icon'],
+                    color=cat_data['color'],
+                    is_default=True,
+                    budget=1000000  # Default budget value
+                )
+                db.session.add(category)
+
+            db.session.commit()
+            logger.info(f"✅ Created {len(DEFAULT_CATEGORIES)} default categories")
+        else:
+            logger.info(f"✅ Admin user already exists with email: {admin_exists.email}")
+
+        return True
+    except Exception as e:
+        logger.error(f"❌ Error setting up database: {str(e)}")
+        db.session.rollback()
+        return False
+
+
+@app.route('/api/init-db', methods=['POST'])
+def init_db():
+    """Initialize the database tables and default data"""
+    if setup_database():
+        return jsonify({'message': 'Database initialized successfully!'}), 200
+    else:
+        return jsonify({'error': 'Failed to initialize database'}), 500
+
 # Auth routes
 @app.route('/api/auth/register', methods=['POST', 'OPTIONS'])
 def register():
