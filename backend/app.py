@@ -17,7 +17,11 @@ from reports_api import reports_bp
 
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+# Enable CORS with all origins allowed
+CORS(app, 
+     supports_credentials=True,
+     allow_headers=["Content-Type", "Authorization"],
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 # Register blueprints
 app.register_blueprint(reports_bp)
