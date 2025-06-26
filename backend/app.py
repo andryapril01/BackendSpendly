@@ -410,7 +410,15 @@ def setup_database():
 @app.route('/api/init-db', methods=['POST'])
 def init_db():
     """Initialize the database tables and default data"""
-    if setup_database():
+    
+    # Debugging: Check if DATABASE_URL is being read correctly
+    database_url = os.environ.get('DATABASE_URL')
+    print(f"Database URL: {database_url}")  # Print the DATABASE_URL to logs
+    
+    if not database_url:
+        print("DATABASE_URL is not set!")
+    
+    if setup_database():  # Assuming this function uses the DATABASE_URL
         return jsonify({'message': 'Database initialized successfully!'}), 200
     else:
         return jsonify({'error': 'Failed to initialize database'}), 500
