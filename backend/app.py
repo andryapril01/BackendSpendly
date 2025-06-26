@@ -23,7 +23,7 @@ import sys
 app = Flask(__name__)
 
 # Load configuration
-config_name = os.environ.get('FLASK_ENV', 'development')
+config_name = os.environ.get('FLASK_ENV', 'production')
 app.config.from_object(config[config_name])
 
 # JWT Configuration - Extended token expiry for development
@@ -41,7 +41,7 @@ blacklisted_tokens = set()
 
 # Enable CORS with proper configuration
 CORS(app, 
-     origins=["http://localhost:3000", "http://127.0.0.1"], 
+     origins=["http://localhost:3000", "https://frontend-spendly-b2fg.vercel.app"], 
      supports_credentials=True,
      allow_headers=["Content-Type", "Authorization"],
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
