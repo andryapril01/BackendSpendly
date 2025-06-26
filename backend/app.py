@@ -177,7 +177,7 @@ import sys
 app = Flask(__name__)
 
 # Load configuration
-config_name = os.environ.get('FLASK_ENV', 'development')
+config_name = os.environ.get('FLASK_ENV', 'production')
 app.config.from_object(config[config_name])
 
 # JWT Configuration - Extended token expiry for development
