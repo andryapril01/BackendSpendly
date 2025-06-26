@@ -552,7 +552,6 @@ def register():
 # FIXED Login endpoint with better error handling
 @app.route('/api/auth/login', methods=['POST', 'OPTIONS'])
 def login():
-
      if request.method == 'OPTIONS':
         response = jsonify({'status': 'OK'})
         response.headers.add('Access-Control-Allow-Origin', 'https://frontend-spendly-b2fg.vercel.app')
