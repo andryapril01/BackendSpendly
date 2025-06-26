@@ -95,7 +95,7 @@ class ProductionConfig(Config):
     DEBUG = False
     # Production should always use environment variable
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'postgresql://spendly_user:spendly_pass@localhost/spendly_prod'
+        'postgresql://postgres:PgvXLKIhqKRobkXcGVDbuGlloBwbVZvx@interchange.proxy.rlwy.net:33322/railway'
     
     # Production database settings
     SQLALCHEMY_ENGINE_OPTIONS = {
