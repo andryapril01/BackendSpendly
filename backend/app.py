@@ -1043,16 +1043,15 @@ if __name__ == '__main__':
     
 
 # Health check endpoint
-@app.route('/api/health', methods=['GET'])
+@app.route('/api/health', methods=['OPTIONS', 'GET'])
 def health_check():
-    # Create the response
     response = jsonify({'status': 'OK', 'message': 'API is running'})
-    
-    # Print the response headers
-    print(response.headers)
-    
-    # Return the response
+    response.headers.add('Access-Control-Allow-Origin', 'https://frontend-spendly-b2fg.vercel.app')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')  # Allow credentials if needed
     return response
+
 
 # Run the app
 if __name__ == '__main__':
