@@ -16,6 +16,9 @@ COPY . .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
+# Set environment variable for DATABASE_URL
+ENV DATABASE_URL=postgresql://postgres:PgvXLKIhqKRobkXcGVDbuGlloBwbVZvx@interchange.proxy.rlwy.net:33322/railway
+
 # Expose port (Railway pakai $PORT)
 EXPOSE 8080
 
