@@ -8,7 +8,7 @@ from PIL import Image
 import io
 import base64
 import re
-import jsonf
+import json
 from datetime import datetime, timezone, timedelta
 import os
 
