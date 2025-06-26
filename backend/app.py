@@ -16,7 +16,7 @@ import os
 from reports_api import reports_bp
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}}, methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+CORS(app)
 
 # Register blueprints
 app.register_blueprint(reports_bp)
