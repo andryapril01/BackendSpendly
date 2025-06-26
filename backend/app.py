@@ -8,7 +8,7 @@ from PIL import Image
 import io
 import base64
 import re
-import json
+import jsonf
 from datetime import datetime, timezone, timedelta
 import os
 
@@ -23,12 +23,10 @@ app = Flask(__name__)
 # Enable CORS
 CORS(app, 
      supports_credentials=True, 
-     origins=[
-         "https://frontend-spendly-b2fg.vercel.app",
-         "http://localhost:3000",
-     ],
-     allow_headers=["Content-Type", "Authorization", "Accept", "X-Requested-With"],
-     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"])
+     origins="*",  # Mengizinkan semua origin
+     allow_headers="*",  # Mengizinkan semua header
+     methods="*",  # Mengizinkan semua metode
+     max_age=86400)  # Optional, menetapkan cache preflight hingga 24 jam
 
 # Register Blueprints for different parts of the app
 app.register_blueprint(reports_bp)
