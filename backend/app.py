@@ -560,7 +560,7 @@ def login():
         response.headers.add('Access-Control-Allow-Credentials', 'true')  # Allow credentials if needed
         return response
 
-    try:
+     try:
         logger.info("=== LOGIN REQUEST START ===")
         
         # Test database connection first
