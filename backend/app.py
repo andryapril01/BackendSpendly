@@ -360,6 +360,8 @@ def test_database_connection():
 #         }
 #     }), 200
 
+     print(response.headers)
+
 # Function to create database tables and default data
 def setup_database():
     """Create all tables and initialize default data"""
