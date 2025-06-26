@@ -156,6 +156,8 @@ def scan_receipt():
     except Exception as e:
         return jsonify({'error': f'Error processing receipt: {str(e)}'}), 500
 
+
+app = Flask(__name__)
 # Load configuration
 config_name = os.environ.get('FLASK_ENV', 'production')
 app.config.from_object(config[config_name])
