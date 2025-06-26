@@ -7,7 +7,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production-2025'
     
     # FIXED: Database config dengan fallback ke SQLite untuk development
-    DATABASE_URL = os.environ.get('DATABASE_URL')
+    DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres:PgvXLKIhqKRobkXcGVDbuGlloBwbVZvx@interchange.proxy.rlwy.net:33322/railway')
     
     if DATABASE_URL:
         # Production atau custom database URL
