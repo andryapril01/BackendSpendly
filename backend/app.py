@@ -337,25 +337,25 @@ def test_database_connection():
         return False
 
 # Health check endpoint
-@app.route('/api/health', methods=['GET'])
-def health_check():
-    try:
-        db_status = 'connected' if test_database_connection() else 'disconnected'
-    except Exception as e:
-        logger.error(f"Database health check failed: {str(e)}")
-        db_status = 'disconnected'
+# @app.route('/api/health', methods=['GET'])
+# def health_check():
+#     try:
+#         db_status = 'connected' if test_database_connection() else 'disconnected'
+#     except Exception as e:
+#         logger.error(f"Database health check failed: {str(e)}")
+#         db_status = 'disconnected'
     
-    return jsonify({
-        'status': 'OK', 
-        'message': 'Auth API is running',
-        'timestamp': datetime.now().isoformat(),
-        'version': '2.0.2',
-        'database': db_status,
-        'jwt_config': {
-            'access_token_expires': str(app.config['JWT_ACCESS_TOKEN_EXPIRES']),
-            'refresh_token_expires': str(app.config['JWT_REFRESH_TOKEN_EXPIRES'])
-        }
-    }), 200
+#     return jsonify({
+#         'status': 'OK', 
+#         'message': 'Auth API is running',
+#         'timestamp': datetime.now().isoformat(),
+#         'version': '2.0.2',
+#         'database': db_status,
+#         'jwt_config': {
+#             'access_token_expires': str(app.config['JWT_ACCESS_TOKEN_EXPIRES']),
+#             'refresh_token_expires': str(app.config['JWT_REFRESH_TOKEN_EXPIRES'])
+#         }
+#     }), 200
 
 # Auth routes
 @app.route('/api/auth/register', methods=['POST', 'OPTIONS'])
