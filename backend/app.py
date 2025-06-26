@@ -17,11 +17,12 @@ from reports_api import reports_bp
 
 
 app = Flask(__name__)
-# Enable CORS with all origins allowed
-CORS(app, 
+CORS(app,
      supports_credentials=True,
-     allow_headers=["Content-Type", "Authorization"],
+     origins=["https://frontend-spendly-b2fg.vercel.app/"],
+     allow_headers=["Content-Type", "Authorization", "Accept"],
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+
 
 # Register blueprints
 app.register_blueprint(reports_bp)
