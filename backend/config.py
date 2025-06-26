@@ -12,6 +12,7 @@ class Config:
     if DATABASE_URL:
         # Production atau custom database URL
         SQLALCHEMY_DATABASE_URI = DATABASE_URL
+        print("using database")
     else:
         # Development fallback - try PostgreSQL first, then SQLite
         PG_HOST = os.environ.get('DB_HOST', 'localhost')
