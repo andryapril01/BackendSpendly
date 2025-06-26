@@ -21,7 +21,12 @@ from dashboard_api import dashboard_bp
 app = Flask(__name__)
 
 # Enable CORS
-CORS(app, origins=["*"])
+CORS(app, 
+     supports_credentials=True, 
+     origins="*",  
+     allow_headers=["Content-Type", "Authorization", "Accept", "X-Requested-With"],
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+     max_age=86400)  # Cache preflight selama 1 hari
 
 # Register Blueprints for different parts of the app
 app.register_blueprint(reports_bp)
