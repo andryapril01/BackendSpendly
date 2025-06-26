@@ -23,9 +23,12 @@ app = Flask(__name__)
 # Enable CORS
 CORS(app, 
      supports_credentials=True, 
-     origins=["https://frontend-spendly-b2fg.vercel.app"],  # Your frontend URL
-     allow_headers=["Content-Type", "Authorization", "Accept"],
-     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+     origins=[
+         "https://frontend-spendly-b2fg.vercel.app",
+         "http://localhost:3000",
+     ],
+     allow_headers=["Content-Type", "Authorization", "Accept", "X-Requested-With"],
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"])
 
 # Register Blueprints for different parts of the app
 app.register_blueprint(reports_bp)
