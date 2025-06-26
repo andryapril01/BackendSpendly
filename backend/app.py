@@ -16,8 +16,7 @@ import os
 from reports_api import reports_bp
 
 app = Flask(__name__)
-# Aktifkan CORS untuk semua origin, method, dan credentials
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}}, methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 # Register blueprints
 app.register_blueprint(reports_bp)
