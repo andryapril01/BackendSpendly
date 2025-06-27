@@ -58,8 +58,10 @@ try:
 except ImportError as e:
     print(f"⚠️ Warning: Could not import blueprints: {e}")
 
-# Configure Tesseract path for Windows
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+if os.name == 'nt':
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+else:
+    pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
 # Configure logging
 logging.basicConfig(
